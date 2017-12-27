@@ -1,25 +1,32 @@
 // Turn this project into a Scala.js project by importing these settings
 enablePlugins(ScalaJSPlugin)
+enablePlugins(WorkbenchPlugin)
 
 name := "scalajs-mapbox"
 
-version := "0.1-RC1"
+version := "0.2-SNAPSHOT"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.12.4"
 
-scalaJSUseMainModuleInitializer in Compile := true
+scalaJSUseMainModuleInitializer in Compile := false
 scalaJSUseMainModuleInitializer in Test := false
 
 testFrameworks += new TestFramework("utest.runner.Framework")
 
 //Need to wait until new MapBox is available in WebJar:
 //skip in packageJSDependencies := false
+// @TODO Figure out how to use webjars
+//  jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
+//  jsDependencies += "org.webjars.npm" % "mapbox-gl" % "0.43.0" / "mapbox-gl.js"
+//  jsDependencies += "org.webjars.npm" % "github-com-mapbox-mapbox-gl-draw" % "1.0.4" / "mabox-gl-draw.js"
+//  jsDependencies += "org.webjars.npm" % "turf__turf" % "4.6.1" / "turf.min.js"
 
 // Show more comments when using dubious features
 scalacOptions += "-feature"
 
 libraryDependencies ++= Seq(
-    "org.scala-js" %%% "scalajs-dom" % "0.9.1",
+    "org.scala-js" %%% "scalajs-dom" % "0.9.4",
+    "com.lihaoyi" %%% "scalatags" % "0.6.7",
     "com.lihaoyi" %%% "utest" % "0.4.5" % "test"
 )
 

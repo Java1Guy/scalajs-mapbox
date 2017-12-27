@@ -2,7 +2,7 @@ package io.github.bbarker.L
 
 import scala.scalajs.js
 import scala.scalajs.js.|
-import scala.scalajs.js.annotation.JSName
+import scala.scalajs.js.annotation._
 
 import org.scalajs.dom.html.Element
 
@@ -175,6 +175,32 @@ class Icon extends Class {
 @JSGlobal("L.DivIcon")
 class DivIcon(geoJsonFeature: js.Object = null, options: js.Object = null
              ) extends Icon {
+
+}
+
+@js.native
+trait FeatureCollection extends js.Object {
+  val `type`: String = js.native
+  val features: js.Array[Feature] = js.native
+}
+
+@js.native
+trait Geometry extends js.Object {
+  val `type`: String = js.native
+  val coordinates: js.Array[Int] = js.native
+}
+
+@js.native
+trait Feature extends js.Object {
+  val id: String = js.native
+  val `type`: String = js.native
+  val geometry: js.Array[Geometry] = js.native
+}
+
+@js.native
+@JSGlobal("MapboxDraw")
+class MapboxDraw(options: js.Object = null) extends Control {
+  def getAll(): FeatureCollection = js.native
 
 }
 
